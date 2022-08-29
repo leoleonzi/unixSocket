@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="SmartImportWizard">
+		<item key="SmartImportRootWizardPage.STORE_HIDE_ALREADY_OPEN" value="false"/>
+		<item key="SmartImportRootWizardPage.STORE_CLOSE_IMPORTED" value="false"/>
+		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
+		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
+		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\Users\leona\Desktop\POLI2022\V2COM\conera-core-c\unixDomainSocket_Client"/>
+			<item value="C:\Users\leona\Desktop\POLI2022\V2COM\conera-core-c\unixDomainSocket_Server"/>
+			<item value="C:\Users\leona\Desktop\POLI2022\V2COM\conera-core-c\hey2"/>
+			<item value="C:\Users\leona\Desktop\POLI2022\V2COM\conera-core-c\app\amr\app-core\platform\hey2"/>
+			<item value="C:\Users\leona\eclipse-workspace\hey2"/>
+			<item value="C:\Users\leona\eclipse-workspace\hello"/>
+			<item value="C:\Users\leona\Desktop\POLI2022\V2COM\conera-core-c\app\amr\app-core\platform\ntx51"/>
+			<item value="C:\Users\leona\Desktop\POLI2022\V2COM\conera-core-c\projs\blink\platform\rpi"/>
+			<item value="C:\Users\leona\Desktop\POLI2022\V2COM\conera-core-c\projs\blink\platform\msp430f5257"/>
+			<item value="C:\Users\leona\Desktop\POLI2022\V2COM\conera-core-c\projs\blink\platform\ntx51"/>
+		</list>
+	</section>
+	<section name="NewWizardAction">
+		<item key="NewWizardSelectionPage.STORE_SELECTED_ID" value="org.eclipse.cdt.ui.wizards.NewCWizard2"/>
+		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
+			<item value="org.eclipse.cdt.ui.newCWizards"/>
+		</list>
+	</section>
+	<section name="ExternalProjectImportWizard">
+	</section>
+	<section name="ChooseWorkspaceDialogSettings">
+		<item key="DIALOG_X_ORIGIN" value="375"/>
+		<item key="DIALOG_Y_ORIGIN" value="205"/>
+	</section>
+	<section name="WORKBENCH_SETTINGS">
+		<list key="ENABLED_TRANSFERS">
+		</list>
+	</section>
+</section>

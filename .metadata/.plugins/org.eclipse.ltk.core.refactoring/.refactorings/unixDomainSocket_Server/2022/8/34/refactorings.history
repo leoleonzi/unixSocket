@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;unixDomainSocket_Server/src/unixDomainSocket_Server.c&apos; to &apos;main.c&apos;" description="Rename resource &apos;unixDomainSocket_Server.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/unixDomainSocket_Server.c" name="main.c" stamp="1661276052676" updateReferences="true"/>
+</session>

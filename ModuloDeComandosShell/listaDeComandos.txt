@@ -1,0 +1,2 @@
+1 func1 /tmp/func1.sock
+2 func2 /tmp/func2.sock

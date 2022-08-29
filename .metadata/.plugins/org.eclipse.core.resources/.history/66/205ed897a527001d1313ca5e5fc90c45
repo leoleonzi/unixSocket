@@ -1,0 +1,4 @@
+#!/bin/sh
+
+mkfifo moduloDeComandos
+cat <> moduloDeComandos
