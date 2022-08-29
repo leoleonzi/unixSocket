@@ -1,4 +1,2 @@
-#!/bin/sh
-
-#mkfifo moduloDeComandosNamedPipe
+mkfifo moduloDeComandosNamedPipe
 cat < moduloDeComandosNamedPipe > listaDeComandos.txt

@@ -17,6 +17,7 @@
 #include <sys/socket.h>
 #include <sys/un.h>
 #include <unistd.h>
+#include <string.h>
 
 int
 main(int argc, char *argv[])
@@ -115,14 +116,22 @@ main(int argc, char *argv[])
             }
 
             /* Add received summand. */
-            buffer;
-            printf("Requested command was %s\n", buffer);
+            int i = 0;
+            char *p = strtok (buffer, "/");
+            char *array[3];
+
+            while (p != NULL)
+                {
+                    array[i++] = p;
+                    p = strtok (NULL, "/");
+                }
+            printf("Received command %s from %s\n", array[0], array[1]);
         }
 
         /* Send result. */
 
         //sprintf(buffer, "%s", result);
-        ret = write(data_socket, "server received data: OK", BUFFER_SIZE);
+        ret = write(data_socket, "Command module received request: OK", BUFFER_SIZE);
 
         if (ret == -1) {
             perror("write");
