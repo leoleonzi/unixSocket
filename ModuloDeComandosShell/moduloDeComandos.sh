@@ -1,2 +1,2 @@
-mkfifo moduloDeComandosNamedPipe
-cat < moduloDeComandosNamedPipe > listaDeComandos.txt
+#mkfifo moduloDeComandosNamedPipe
+cat <> moduloDeComandosNamedPipe > listaDeComandos.txt
