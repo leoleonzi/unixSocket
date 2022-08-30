@@ -54,28 +54,28 @@ int main(int argc, char *argv[])
             // break;
         }
 
-    /* Request result. */
+    /* Request close of socket. */
 
-    // strcpy (buffer, "END");
-    // ret = write(data_socket, buffer, strlen(buffer) + 1);
-    // if (ret == -1) {
-    //     perror("write");
-    //     exit(EXIT_FAILURE);
-    // }
-
-    /* Receive result. */
-
-    ret = read(data_socket, buffer, BUFFER_SIZE);
+    strcpy (buffer, "END");
+    ret = write(data_socket, buffer, strlen(buffer) + 1);
     if (ret == -1) {
-        perror("read");
+        perror("write");
         exit(EXIT_FAILURE);
     }
 
+    /* Receive result. */
+
+    // ret = read(data_socket, buffer, BUFFER_SIZE);
+    // if (ret == -1) {
+    //     perror("read");
+    //     exit(EXIT_FAILURE);
+    // }
+
     /* Ensure buffer is 0-terminated. */
 
-    buffer[BUFFER_SIZE - 1] = 0;
+    // buffer[BUFFER_SIZE - 1] = 0;
 
-    printf("Result = %s\n", buffer);
+    // printf("Result = %s\n", buffer);
 
     /* Close socket. */
 

@@ -8148,3 +8148,37 @@ java.lang.IllegalStateException: operation plan must be resolved
 	at org.eclipse.equinox.internal.p2.ui.ProvUI.toCompabilityWithCurrentJREProvisioningPlan(ProvUI.java:325)
 	at org.eclipse.epp.internal.mpc.ui.wizards.MarketplaceWizard.lambda$5(MarketplaceWizard.java:876)
 	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:122)
+!SESSION 2022-08-29 16:15:34.731 -----------------------------------------------
+eclipse.buildId=4.21.0.I20210906-0500
+java.version=16.0.2
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=pt_BR
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -product org.eclipse.epp.package.cpp.product -product org.eclipse.epp.package.cpp.product -product org.eclipse.epp.package.cpp.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product -product org.eclipse.epp.package.cpp.product -product org.eclipse.epp.package.cpp.product -data \\wsl$\Ubuntu\home\leoleonzi\unixSocket -product org.eclipse.epp.package.cpp.product
+
+!ENTRY org.eclipse.ui.ide 4 4 2022-08-29 16:15:37.507
+!MESSAGE Could not obtain lock for workspace location
+
+!ENTRY org.eclipse.ui.ide 4 4 2022-08-29 16:15:37.509
+!MESSAGE Could not obtain lock for workspace location
+!STACK 0
+java.io.IOException: An error occurred while locking file "\\wsl$\Ubuntu\home\leoleonzi\unixSocket\.metadata\.lock": "Função incorreta". A common reason is that the file system or Runtime Environment does not support file locking for that location. Please choose a different location, or disable file locking by passing "-Dosgi.locking=none" as a VM argument.
+	at org.eclipse.osgi.internal.location.Locker_JavaNio.isLocked(Locker_JavaNio.java:105)
+	at org.eclipse.osgi.internal.location.BasicLocation.isLocked(BasicLocation.java:217)
+	at org.eclipse.osgi.internal.location.BasicLocation.isLocked(BasicLocation.java:173)
+	at org.eclipse.osgi.internal.location.BasicLocation.lock(BasicLocation.java:187)
+	at org.eclipse.osgi.internal.location.BasicLocation.lock(BasicLocation.java:166)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.checkInstanceLocation(IDEApplication.java:226)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:142)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:136)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:401)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:78)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:659)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:596)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1467)

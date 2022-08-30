@@ -115,7 +115,6 @@ main(int argc, char *argv[])
                 break;
             }
 
-            /* Add received summand. */
             int i = 0;
             char *p = strtok (buffer, " ");
             char *array[30];
@@ -129,6 +128,7 @@ main(int argc, char *argv[])
             // printf("%s\n", array[0]);
             // printf("%s\n", array[1]);
             // printf("%s\n", array[2]);
+
         }
 
         /* Send result. */
