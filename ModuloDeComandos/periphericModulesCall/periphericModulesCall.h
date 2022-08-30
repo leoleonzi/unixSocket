@@ -1,0 +1,1 @@
+int periphericModulesCall(int);

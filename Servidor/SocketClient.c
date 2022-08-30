@@ -46,8 +46,6 @@ int main(int argc, char *argv[])
         exit(EXIT_FAILURE);
     }
 
-    printf("Requisitando acionamento de comando 1/n");
-
 	ret = write(data_socket, dado, 30);
         if (ret == -1) {
             perror("write");
