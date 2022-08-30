@@ -9,7 +9,7 @@
  */
 
 #define SOCKET_NAME "/tmp/moduloDeComandosServer.sock"
-#define BUFFER_SIZE 12
+#define BUFFER_SIZE 30
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -117,20 +117,22 @@ main(int argc, char *argv[])
 
             /* Add received summand. */
             int i = 0;
-            char *p = strtok (buffer, "/");
-            char *array[3];
+            char *p = strtok (buffer, " ");
+            char *array[30];
 
             while (p != NULL)
                 {
                     array[i++] = p;
-                    p = strtok (NULL, "/");
+                    p = strtok (NULL, " ");
                 }
-            printf("Received command %s from %s\n", array[0], array[1]);
+            printf("Received command %s from %s, and socket path: %s\n", array[0], array[1], array[2]);
+            // printf("%s\n", array[0]);
+            // printf("%s\n", array[1]);
+            // printf("%s\n", array[2]);
         }
 
         /* Send result. */
 
-        //sprintf(buffer, "%s", result);
         ret = write(data_socket, "Command module received request: OK", BUFFER_SIZE);
 
         if (ret == -1) {
