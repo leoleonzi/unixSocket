@@ -1,3 +1,5 @@
+// socket working as server!
+
 #define SOCKET_NAME "/tmp/moduloOTAP.sock"
 #define BUFFER_SIZE 30
 
@@ -114,13 +116,14 @@ int main(){
                     array[i++] = p;
                     p = strtok (NULL, " ");
                 }
-            printf("Received command %s from Command Module", array[0]);
-
+            // printf("Received command %s from Command Module", array[0]);
+            printf("Action triggered by Comand Module: Execute command %s\n", array[1]);
+            break;
         }
 
         /* Send result. */
 
-        ret = write(data_socket, "Command module received request: OK", BUFFER_SIZE);
+        ret = write(data_socket, "OK", BUFFER_SIZE);
 
         if (ret == -1) {
             perror("write");
@@ -130,7 +133,7 @@ int main(){
         /* Close socket. */
 
         close(data_socket);
-
+        break;
         /* Quit on DOWN command. */
 
         if (down_flag) {

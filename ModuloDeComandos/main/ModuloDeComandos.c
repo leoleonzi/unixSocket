@@ -20,7 +20,7 @@
 #include <sys/un.h>
 #include <unistd.h>
 #include <string.h>
-#include "../periphericModulesCall/periphericModulesCall.h"
+#include "./periphericModulesCall.h"
 
 int main(int argc, char *argv[])
 {
@@ -142,13 +142,22 @@ int main(int argc, char *argv[])
 
             
         }
+        
+        periphericModulesCallMain("/tmp/moduloOTAP.sock");
 
         /* Send result. */
 
-        ret = write(data_socket, "Command module received request: OK", BUFFER_SIZE);
+        ret = write(data_socket, "Command module received request: OK\n", BUFFER_SIZE);
 
         if (ret == -1)
         {
+            perror("write");
+            exit(EXIT_FAILURE);
+        }
+
+        strcpy (buffer, "END");
+        ret = write(data_socket, buffer, strlen(buffer) + 1);
+        if (ret == -1) {
             perror("write");
             exit(EXIT_FAILURE);
         }

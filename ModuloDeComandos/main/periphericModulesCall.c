@@ -2,7 +2,7 @@
 
 // To do: collect the unix socket path autoamtically, according to the command id
 
-#define SOCKET_NAME "/tmp/moduloOTAP.sock"
+// #define SOCKET_NAME "/tmp/moduloOTAP.sock"
 #define BUFFER_SIZE 30
 
 #include <errno.h>
@@ -13,7 +13,7 @@
 #include <sys/un.h>
 #include <unistd.h>
 
-int periphericModulesCallMain(char SOCKET_NAME[])
+int periphericModulesCallMain(char * SOCKET_NAME)
 {
     struct sockaddr_un addr;
     int i;
@@ -58,28 +58,28 @@ int periphericModulesCallMain(char SOCKET_NAME[])
 
     /* Request close of socket. */
 
+    
+
+    /* Receive result. */
+
+    ret = read(data_socket, buffer, BUFFER_SIZE);
+    if (ret == -1) {
+        perror("read");
+        exit(EXIT_FAILURE);
+    }
+
+    /* Ensure buffer is 0-terminated. */
+
+    printf("Result of operation with peripherical module = %s\n", buffer);
+
+    /* Close socket. */
+
     strcpy (buffer, "END");
     ret = write(data_socket, buffer, strlen(buffer) + 1);
     if (ret == -1) {
         perror("write");
         exit(EXIT_FAILURE);
     }
-
-    /* Receive result. */
-
-    // ret = read(data_socket, buffer, BUFFER_SIZE);
-    // if (ret == -1) {
-    //     perror("read");
-    //     exit(EXIT_FAILURE);
-    // }
-
-    /* Ensure buffer is 0-terminated. */
-
-    // buffer[BUFFER_SIZE - 1] = 0;
-
-    // printf("Result = %s\n", buffer);
-
-    /* Close socket. */
 
     close(data_socket);
 
