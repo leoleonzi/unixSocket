@@ -1,3 +1,5 @@
+// module acting as client regarding the unix socket
+
 #define SOCKET_NAME "/tmp/moduloDeComandosServer.sock"
 #define BUFFER_SIZE 30
 
@@ -16,7 +18,7 @@ int main(int argc, char *argv[])
     int ret;
     int data_socket;
     char buffer[BUFFER_SIZE];
-    char dado[30] = "1 Modulo1 tmp/path.sock";
+    char dado[30] = "1 SerialModule";
 
     /* Create local socket. */
 
@@ -63,11 +65,11 @@ int main(int argc, char *argv[])
 
     /* Receive result. */
 
-    // ret = read(data_socket, buffer, BUFFER_SIZE);
-    // if (ret == -1) {
-    //     perror("read");
-    //     exit(EXIT_FAILURE);
-    // }
+    ret = read(data_socket, buffer, BUFFER_SIZE);
+    if (ret == -1) {
+        perror("read");
+        exit(EXIT_FAILURE);
+    }
 
     /* Ensure buffer is 0-terminated. */
 

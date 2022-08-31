@@ -135,7 +135,7 @@ int main(int argc, char *argv[])
                 array[i++] = p;
                 p = strtok(NULL, " ");
             }
-            printf("Received command %s from %s, and socket path: %s\n", array[0], array[1], array[2]);
+            printf("Received command %s from %s\n", array[0], array[1]);
             // printf("%s\n", array[0]);
             // printf("%s\n", array[1]);
             // printf("%s\n", array[2]);
