@@ -1,11 +1,13 @@
 /*
  ============================================================================
  Name        : ModuloDeComandos.c
- Author      : 
+ Author      :
  Version     :
  Copyright   : Your copyright notice
  Description : Hello World in C, Ansi-style
  ============================================================================
+
+
  */
 
 #define SOCKET_NAME "/tmp/moduloDeComandosServer.sock"
@@ -18,9 +20,9 @@
 #include <sys/un.h>
 #include <unistd.h>
 #include <string.h>
+#include "../periphericModulesCall/periphericModulesCall.h"
 
-int
-main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
     struct sockaddr_un addr;
     int down_flag = 0;
@@ -40,7 +42,8 @@ main(int argc, char *argv[])
     /* Create local socket. */
 
     listen_socket = socket(AF_UNIX, SOCK_STREAM, 0);
-    if (listen_socket == -1) {
+    if (listen_socket == -1)
+    {
         perror("socket");
         exit(EXIT_FAILURE);
     }
@@ -58,9 +61,10 @@ main(int argc, char *argv[])
     addr.sun_family = AF_UNIX;
     strncpy(addr.sun_path, SOCKET_NAME, sizeof(addr.sun_path) - 1);
 
-    ret = bind(listen_socket, (const struct sockaddr *) &addr,
+    ret = bind(listen_socket, (const struct sockaddr *)&addr,
                sizeof(struct sockaddr_un));
-    if (ret == -1) {
+    if (ret == -1)
+    {
         perror("bind");
         exit(EXIT_FAILURE);
     }
@@ -72,30 +76,35 @@ main(int argc, char *argv[])
      */
 
     ret = listen(listen_socket, 20);
-    if (ret == -1) {
+    if (ret == -1)
+    {
         perror("listen");
         exit(EXIT_FAILURE);
     }
 
     /* This is the main loop for handling connections. */
 
-    for (;;) {
+    for (;;)
+    {
 
         /* Wait for incoming connection. */
 
         data_socket = accept(listen_socket, NULL, NULL);
-        if (data_socket == -1) {
+        if (data_socket == -1)
+        {
             perror("accept");
             exit(EXIT_FAILURE);
         }
 
-        //result = 0;
-        for(;;) {
+        // result = 0;
+        for (;;)
+        {
 
             /* Wait for next data packet. */
 
             ret = read(data_socket, buffer, BUFFER_SIZE);
-            if (ret == -1) {
+            if (ret == -1)
+            {
                 perror("read");
                 exit(EXIT_FAILURE);
             }
@@ -106,36 +115,40 @@ main(int argc, char *argv[])
 
             /* Handle commands. */
 
-            if (!strncmp(buffer, "DOWN", BUFFER_SIZE)) {
+            if (!strncmp(buffer, "DOWN", BUFFER_SIZE))
+            {
                 down_flag = 1;
                 break;
             }
 
-            if (!strncmp(buffer, "END", BUFFER_SIZE)) {
+            if (!strncmp(buffer, "END", BUFFER_SIZE))
+            {
                 break;
             }
 
             int i = 0;
-            char *p = strtok (buffer, " ");
+            char *p = strtok(buffer, " ");
             char *array[30];
 
             while (p != NULL)
-                {
-                    array[i++] = p;
-                    p = strtok (NULL, " ");
-                }
+            {
+                array[i++] = p;
+                p = strtok(NULL, " ");
+            }
             printf("Received command %s from %s, and socket path: %s\n", array[0], array[1], array[2]);
             // printf("%s\n", array[0]);
             // printf("%s\n", array[1]);
             // printf("%s\n", array[2]);
 
+            
         }
 
         /* Send result. */
 
         ret = write(data_socket, "Command module received request: OK", BUFFER_SIZE);
 
-        if (ret == -1) {
+        if (ret == -1)
+        {
             perror("write");
             exit(EXIT_FAILURE);
         }
@@ -146,7 +159,8 @@ main(int argc, char *argv[])
 
         /* Quit on DOWN command. */
 
-        if (down_flag) {
+        if (down_flag)
+        {
             break;
         }
     }
@@ -159,4 +173,3 @@ main(int argc, char *argv[])
 
     exit(EXIT_SUCCESS);
 }
-
