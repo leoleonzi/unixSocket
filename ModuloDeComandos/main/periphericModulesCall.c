@@ -84,4 +84,6 @@ int periphericModulesCallMain(char * SOCKET_NAME)
     close(data_socket);
 
     exit(EXIT_SUCCESS);
+
+    return 0;
 }

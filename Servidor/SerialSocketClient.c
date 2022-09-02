@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
     int ret;
     int data_socket;
     char buffer[BUFFER_SIZE];
-    char dado[30] = "1 SerialModule";
+    char dado[30] = "20 SerialModule";
 
     /* Create local socket. */
 

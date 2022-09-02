@@ -21,6 +21,8 @@
 #include <unistd.h>
 #include <string.h>
 #include "./periphericModulesCall.h"
+#include "./fetchCommandAndSocket.h"
+
 
 int main(int argc, char *argv[])
 {
@@ -136,10 +138,16 @@ int main(int argc, char *argv[])
                 p = strtok(NULL, " ");
             }
             printf("Received command %s from %s\n", array[0], array[1]);
+            printf("Searching for this command in the list of commands\n");
+
+            char socketPath[30];
+            // socketPath = sockefetchCommandAndSocket(atoi(array[0]));
             // printf("%s\n", array[0]);
             // printf("%s\n", array[1]);
             // printf("%s\n", array[2]);
 
+            printf("Socket name to be utilized: %s\n", fetchCommandAndSocket(atoi(array[0])));
+            printf("chegou");
             
         }
         

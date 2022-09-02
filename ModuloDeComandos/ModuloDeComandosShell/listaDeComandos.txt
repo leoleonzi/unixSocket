@@ -1,1 +1,6 @@
-240 func3 /tmp/sock3.sock
+17 func17 /tmp/func17.sock
+12 func12 /tmp/func12.sock
+11 func11 /tmp/func11.sock
+15 OTAP /tmp/moduloOTAP.sock
+20 OTAP /tmp/moduloOTAP.sock
+21 func21 /tmp/func21.sock
