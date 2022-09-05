@@ -1,8 +1,6 @@
-// Commands module working as Client when accessing peripheric modules
+// module acting as client regarding the unix socket
 
-// To do: collect the unix socket path autoamtically, according to the command id
-
-// #define SOCKET_NAME "/tmp/moduloOTAP.sock"
+#define SOCKET_NAME "/tmp/moduloDeComandosServer.sock"
 #define BUFFER_SIZE 30
 
 #include <errno.h>
@@ -13,13 +11,17 @@
 #include <sys/un.h>
 #include <unistd.h>
 
-int periphericModulesCallMain(char * socket_name, char * commandId)
+int main(int argc, char *argv[])
 {
     struct sockaddr_un addr;
     int i;
     int ret;
     int data_socket;
     char buffer[BUFFER_SIZE];
+    char dado[30] = "25 SMSModule";
+
+    printf("Type the command ID and the source: ");
+    scanf("%[^\t\n]",dado);
 
     /* Create local socket. */
 
@@ -40,7 +42,7 @@ int periphericModulesCallMain(char * socket_name, char * commandId)
     /* Connect socket to socket address */
 
     addr.sun_family = AF_UNIX;
-    strncpy(addr.sun_path, socket_name, sizeof(addr.sun_path) - 1);
+    strncpy(addr.sun_path, SOCKET_NAME, sizeof(addr.sun_path) - 1);
 
     ret = connect (data_socket, (const struct sockaddr *) &addr,
                    sizeof(struct sockaddr_un));
@@ -49,7 +51,7 @@ int periphericModulesCallMain(char * socket_name, char * commandId)
         exit(EXIT_FAILURE);
     }
 
-	ret = write(data_socket, commandId, 30);
+	ret = write(data_socket, dado, 30);
         if (ret == -1) {
             perror("write");
             // break;
@@ -57,7 +59,12 @@ int periphericModulesCallMain(char * socket_name, char * commandId)
 
     /* Request close of socket. */
 
-    
+    strcpy (buffer, "END");
+    ret = write(data_socket, buffer, strlen(buffer) + 1);
+    if (ret == -1) {
+        perror("write");
+        exit(EXIT_FAILURE);
+    }
 
     /* Receive result. */
 
@@ -69,20 +76,13 @@ int periphericModulesCallMain(char * socket_name, char * commandId)
 
     /* Ensure buffer is 0-terminated. */
 
-    printf("Result of operation with peripherical module = %s\n", buffer);
+    // buffer[BUFFER_SIZE - 1] = 0;
+
+    printf("Result = %s\n", buffer);
 
     /* Close socket. */
-
-    strcpy (buffer, "END");
-    ret = write(data_socket, buffer, strlen(buffer) + 1);
-    if (ret == -1) {
-        perror("write");
-        exit(EXIT_FAILURE);
-    }
 
     close(data_socket);
 
     exit(EXIT_SUCCESS);
-
-    return 0;
 }

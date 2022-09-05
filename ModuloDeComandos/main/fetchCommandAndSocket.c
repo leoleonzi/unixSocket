@@ -27,6 +27,7 @@ char *fetchCommandAndSocket(int commandId)
     char *p;
     char *array[30];
     bool foundId;
+    static char socketPath3[30];
     
     while ((read = getline(&line, &len, fp)) != -1)
     {
@@ -41,22 +42,21 @@ char *fetchCommandAndSocket(int commandId)
         foundId = (atoi(array[0])==commandId);
 
         if (foundId == 1){
+            strcpy(socketPath3, array[2]);
             break;
         }
     }
-
-    char * socketPath2 = array[2];
 
     if (foundId == 0){
         printf("Command %d not found\n", commandId);
     }
 
-    else printf("Command %s found. Responsible for execution: %s. \nUnix Domain Socket Path utilized %s\n", array[0], array[1], socketPath2);
+    else printf("Command %s found. Responsible for execution: %s. \nUnix Domain Socket Path utilized %s\n", array[0], array[1], socketPath3);
 
     
     fclose(fp);
     if (line)
         free(line);
 
-    return socketPath2;
+    return socketPath3;
 }

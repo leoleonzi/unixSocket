@@ -99,6 +99,11 @@ int main(int argc, char *argv[])
         }
 
         // result = 0;
+        char *array[30];
+
+
+// começar a thread aqui 
+        static char * socketPath;
         for (;;)
         {
 
@@ -130,7 +135,6 @@ int main(int argc, char *argv[])
 
             int i = 0;
             char *p = strtok(buffer, " ");
-            char *array[30];
 
             while (p != NULL)
             {
@@ -140,18 +144,18 @@ int main(int argc, char *argv[])
             printf("Received command %s from %s\n", array[0], array[1]);
             printf("Searching for this command in the list of commands\n");
 
-            char socketPath[30];
-            // socketPath = sockefetchCommandAndSocket(atoi(array[0]));
             // printf("%s\n", array[0]);
             // printf("%s\n", array[1]);
             // printf("%s\n", array[2]);
 
-            printf("Socket name to be utilized: %s\n", fetchCommandAndSocket(atoi(array[0])));
-            printf("chegou");
+            socketPath = fetchCommandAndSocket(atoi(array[0]));
+
             
         }
         
-        periphericModulesCallMain("/tmp/moduloOTAP.sock");
+        printf("Socket name to be utilized: %s\n", socketPath);
+        
+        periphericModulesCallMain(socketPath, array[0]);
 
         /* Send result. */
 

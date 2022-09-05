@@ -1,1 +1,1 @@
-int periphericModulesCallMain(char *);
+int periphericModulesCallMain(char *, char *);

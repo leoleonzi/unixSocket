@@ -1,6 +1,6 @@
 // socket working as server!
 
-#define SOCKET_NAME "/tmp/moduloOTAP.sock"
+#define SOCKET_NAME "/tmp/medicaoApp.sock"
 #define BUFFER_SIZE 30
 
 #include <stdio.h>
@@ -111,7 +111,7 @@ int main(){
                 }
             // printf("Received command %s from Command Module\n", array[0]);
 
-            printf("Action triggered by Comand Module: Execute command %d\n", commandReceived);
+            printf("Action triggered by Comand Module: %s\n", buffer);
             break;
         }
 

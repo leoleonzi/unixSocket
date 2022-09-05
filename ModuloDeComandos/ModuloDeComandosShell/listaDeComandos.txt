@@ -1,6 +1,10 @@
-17 func17 /tmp/func17.sock
-12 func12 /tmp/func12.sock
-11 func11 /tmp/func11.sock
-15 OTAP /tmp/moduloOTAP.sock
-20 OTAP /tmp/moduloOTAP.sock
-21 func21 /tmp/func21.sock
+17 func17 /tmp/func17.sock -
+12 func12 /tmp/func12.sock -
+11 func11 /tmp/func11.sock -
+21 func21 /tmp/func21.sock -
+7 func7 /tmp/func7.sock -
+9 func7 /tmp/func7.sock -
+10 func7 /tmp/func7.sock -
+20 OTAP /tmp/moduloOTAP.sock -
+25 MedicaoApp /tmp/medicaoApp.sock -
+
